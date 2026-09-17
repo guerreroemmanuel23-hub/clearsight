@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0B1012">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Clearsight">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAD3UlEQVR42u3dwZHTShCAYePixoUiBdIggD0TDTeKG9FwJoBNg1wIYI2RNNPT0zPff3zF09qtz5IsW/K7Dx8/3aRH3Y1AcAgOwSE4BIfgEByCQ3AIDgkOwSE4BIfgEByCQ3AIDsEhwSE4BIfgEByCQ3AIDsEhOCQ4BIfgEByCQ3AIDsEhOASH4JDgEByCQ3AIDsEhOASH4BAcEhyCQ3AIDg3t/W5P+MvvXy3/++vL131m9W7hX6RudEDMUjiGadjESnkck4BYEkpVHJObWENJMRzlTJRWUgNHRxON62aeRwJH08o4Mv3P3789/wd/fvxMf5BwdJj48UH/18Q1JQMe+e44Tg331FgvmGhREvpctsNxfJRn59iFxWUioU9tCxxHxndtcN1lXPMR/TTXxBE6ryAZLT6qEMnH8d8xRbN4soLbl5D13FfA8Xw6LaPp8h41aGnDhlAVR+hEnq/LyysyaLHTEsnB8WQQ7VN4sgob19+A5YdO5mz3xWTEvbK7L+fsBMZ/rjR6yxEt4+HLOmh1xv2tSbYfU3yH9PXlazkZ/1pyl3fOvQZSCcfDF0SvKYSez0h5JA8nM3Lncl9DRsrxwYDl5/q4ryFj8A5lzM4l3YfrVpT6bmXADuXtK7XxU9P2T337brdSdso5W45oGWfn/nb0D/9j4gFyypuXe8pmI+U44CCLa0TGHN8Mnu29+mZjwGS3vVaq/AHpPKc3aj22fBzT7lPOPrAj/369PcvoLcdWV6lXn96O5zmuvdoWuNgODsEhOASH4Kh8zL/h+6zRODY85q87vfuEr9HGjpyXPPvAutzNodyEy+9WUs5LLvDYJsVR7nOscp8UlsEx7Z7lduBL3se/Bb7ePiVtt9L3RdC49X4ooP3igAHfBItu0EVNC3/BeMBfT/mO4M1JMOXjiP5+ffT1ARtuNoZuOVKuv4j2Eb38RBmjdyuhPuY5qdDrkeTKmOWYo/06gJSdS+hV9jOcDUq4eUvKXRj6blpC/8Q892+Z69KE0JdLr01I6HHGVHf2cU+w/MUOGEgxHNETcTfB8jhu7kMa89wXwXFzB+MpZdzc+3y8DPc+D/RxbXx+NaE8jgtvaP3eyl44Lp/z8EtNu+C4POhTE/cbb4VxtE+/78rw65BbKMnK78pSUthEeRxVlPgte1DWAbEsjiwrq15jvTKOCDFbXWu/HQ4dz3UrgkNwCA7BITgEh+AQHIJDcEhwCA7BITgEh+AQHIJDcAgOCQ7BITgEh+AQHIJDcAgOwSHBITgEh+AQHIJDcAgOwSE4BIcEh+AQHIJDcAgOwSE4BIfgkOAQHIJDIf0F0nTxAnMSeT4AAAAASUVORK5CYII=">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAD3UlEQVR42u3dwZHTShCAYePixoUiBdIggD0TDTeKG9FwJoBNg1wIYI2RNNPT0zPff3zF09qtz5IsW/K7Dx8/3aRH3Y1AcAgOwSE4BIfgEByCQ3AIDgkOwSE4BIfgEByCQ3AIDsEhwSE4BIfgEByCQ3AIDsEhOCQ4BIfgEByCQ3AIDsEhOASH4JDgEByCQ3AIDsEhOASH4BAcEhyCQ3AIDg3t/W5P+MvvXy3/++vL131m9W7hX6RudEDMUjiGadjESnkck4BYEkpVHJObWENJMRzlTJRWUgNHRxON62aeRwJH08o4Mv3P3789/wd/fvxMf5BwdJj48UH/18Q1JQMe+e44Tg331FgvmGhREvpctsNxfJRn59iFxWUioU9tCxxHxndtcN1lXPMR/TTXxBE6ryAZLT6qEMnH8d8xRbN4soLbl5D13FfA8Xw6LaPp8h41aGnDhlAVR+hEnq/LyysyaLHTEsnB8WQQ7VN4sgob19+A5YdO5mz3xWTEvbK7L+fsBMZ/rjR6yxEt4+HLOmh1xv2tSbYfU3yH9PXlazkZ/1pyl3fOvQZSCcfDF0SvKYSez0h5JA8nM3Lncl9DRsrxwYDl5/q4ryFj8A5lzM4l3YfrVpT6bmXADuXtK7XxU9P2T337brdSdso5W45oGWfn/nb0D/9j4gFyypuXe8pmI+U44CCLa0TGHN8Mnu29+mZjwGS3vVaq/AHpPKc3aj22fBzT7lPOPrAj/369PcvoLcdWV6lXn96O5zmuvdoWuNgODsEhOASH4Kh8zL/h+6zRODY85q87vfuEr9HGjpyXPPvAutzNodyEy+9WUs5LLvDYJsVR7nOscp8UlsEx7Z7lduBL3se/Bb7ePiVtt9L3RdC49X4ooP3igAHfBItu0EVNC3/BeMBfT/mO4M1JMOXjiP5+ffT1ARtuNoZuOVKuv4j2Eb38RBmjdyuhPuY5qdDrkeTKmOWYo/06gJSdS+hV9jOcDUq4eUvKXRj6blpC/8Q892+Z69KE0JdLr01I6HHGVHf2cU+w/MUOGEgxHNETcTfB8jhu7kMa89wXwXFzB+MpZdzc+3y8DPc+D/RxbXx+NaE8jgtvaP3eyl44Lp/z8EtNu+C4POhTE/cbb4VxtE+/78rw65BbKMnK78pSUthEeRxVlPgte1DWAbEsjiwrq15jvTKOCDFbXWu/HQ4dz3UrgkNwCA7BITgEh+AQHIJDcEhwCA7BITgEh+AQHIJDcAgOCQ7BITgEh+AQHIJDcAgOwSHBITgEh+AQHIJDcAgOwSE4BIcEh+AQHIJDcAgOwSE4BIfgkOAQHIJDIf0F0nTxAnMSeT4AAAAASUVORK5CYII=">
+<style>html,body{background:#0B1012}</style>
+</head>
+<body>
+<title>Clearsight Camera</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ground:#0B1012;
+    --panel:#141B1E;
+    --panel-2:#1B2427;
+    --line:#2B3639;
+    --ink:#E9EEEC;
+    --ink-dim:#87999C;
+    --cyan:#47C8C0;
+    --cyan-deep:#2E8F8A;
+    --alert:#E0685A;
+    --pad:clamp(12px,3.2vw,20px);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Barlow Semi Condensed","Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overscroll-behavior:none;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .app{
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+    min-height:100dvh;
+    max-width:560px;
+    margin:0 auto;
+    background:var(--ground);
+  }
+
+  /* ---- header ---- */
+  .bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:calc(var(--pad)*0.7) var(--pad);
+    border-bottom:1px solid var(--line);
+    background:var(--panel);
+  }
+  .mark{
+    display:flex;align-items:baseline;gap:8px;
+  }
+  .mark b{
+    font-weight:600;font-size:17px;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .mark span{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:10px;letter-spacing:.1em;color:var(--ink-dim);
+  }
+  .readout{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11px;letter-spacing:.06em;
+    color:var(--cyan);
+    border:1px solid var(--cyan-deep);
+    border-radius:2px;
+    padding:4px 7px;
+    font-variant-numeric:tabular-nums;
+    white-space:nowrap;
+  }
+  .readout.off{color:var(--ink-dim);border-color:var(--line)}
+
+  /* ---- viewfinder ---- */
+  .view{
+    position:relative;
+    flex:1 1 auto;
+    min-height:44vh;
+    background:#05090A;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  #gl{display:block;width:100%;height:100%}
+  #vid{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+  .frame{position:absolute;inset:0;pointer-events:none}
+  .frame i{
+    position:absolute;width:18px;height:18px;
+    border:1px solid rgba(233,238,236,.28);
+  }
+  .frame i:nth-child(1){top:12px;left:12px;border-right:0;border-bottom:0}
+  .frame i:nth-child(2){top:12px;right:12px;border-left:0;border-bottom:0}
+  .frame i:nth-child(3){bottom:12px;left:12px;border-right:0;border-top:0}
+  .frame i:nth-child(4){bottom:12px;right:12px;border-left:0;border-top:0}
+
+  .flag{
+    position:absolute;left:12px;bottom:12px;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:10px;letter-spacing:.08em;
+    background:rgba(11,16,18,.72);
+    border:1px solid var(--line);
+    color:var(--cyan);
+    padding:3px 6px;border-radius:2px;
+  }
+  .flag.bypass{color:var(--alert);border-color:rgba(224,104,90,.5)}
+
+  .rec{
+    position:absolute;top:12px;left:50%;transform:translateX(-50%);
+    display:none;align-items:center;gap:6px;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;
+    background:rgba(11,16,18,.75);border:1px solid rgba(224,104,90,.5);
+    color:var(--alert);padding:3px 8px;border-radius:2px;
+    font-variant-numeric:tabular-nums;
+  }
+  .rec.on{display:flex}
+  .rec b{width:7px;height:7px;border-radius:50%;background:var(--alert);animation:blink 1s steps(2,end) infinite}
+  @keyframes blink{50%{opacity:.15}}
+  @media (prefers-reduced-motion:reduce){.rec b{animation:none}}
+
+  /* start / error state */
+  .gate{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:14px;padding:28px;text-align:center;
+    background:linear-gradient(180deg,#0B1012, #101819);
+  }
+  .gate p{
+    margin:0;max-width:38ch;font-size:15px;line-height:1.5;color:var(--ink-dim);
+  }
+  .gate p b{color:var(--ink);font-weight:500}
+  .gate.hide{display:none}
+
+  /* ---- control deck ---- */
+  .deck{
+    background:var(--panel);
+    border-top:1px solid var(--line);
+    padding:var(--pad);
+    display:flex;flex-direction:column;gap:16px;
+    padding-bottom:calc(var(--pad) + env(safe-area-inset-bottom,0px));
+  }
+  .dial{display:flex;flex-direction:column;gap:7px}
+  .dial header{
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
+  }
+  .dial header var{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-style:normal;font-size:12px;color:var(--ink);
+    font-variant-numeric:tabular-nums;letter-spacing:.04em;
+  }
+  input[type=range]{
+    -webkit-appearance:none;appearance:none;
+    width:100%;height:22px;background:transparent;margin:0;
+  }
+  input[type=range]::-webkit-slider-runnable-track{
+    height:3px;background:var(--line);border-radius:2px;
+  }
+  input[type=range]::-moz-range-track{height:3px;background:var(--line);border-radius:2px}
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;
+    width:20px;height:20px;margin-top:-9px;border-radius:50%;
+    background:var(--ink);border:4px solid var(--cyan-deep);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:20px;height:20px;border-radius:50%;
+    background:var(--ink);border:4px solid var(--cyan-deep);
+  }
+  input[type=range]:focus-visible{outline:2px solid var(--cyan);outline-offset:4px;border-radius:4px}
+
+  .row{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    gap:12px;
+  }
+  .side{display:flex;gap:10px}
+  .side.right{justify-content:flex-end}
+  button{
+    font-family:inherit;color:var(--ink);cursor:pointer;
+    background:var(--panel-2);border:1px solid var(--line);
+    border-radius:3px;
+    font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    padding:11px 12px;min-width:60px;
+    transition:background .12s ease,border-color .12s ease;
+  }
+  button:active{background:#232E31}
+  button:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+  button[disabled]{opacity:.35;cursor:default}
+  button.armed{border-color:var(--alert);color:var(--alert)}
+  button.held{background:var(--alert);border-color:var(--alert);color:#0B1012}
+
+  .shutter{
+    width:74px;height:74px;border-radius:50%;
+    background:var(--ink);border:3px solid var(--panel);
+    box-shadow:0 0 0 2px var(--ink);
+    padding:0;min-width:0;
+  }
+  .shutter:active{background:var(--cyan)}
+
+  /* ---- result sheet ---- */
+  .sheet{
+    position:fixed;inset:0;z-index:20;
+    background:rgba(5,9,10,.94);
+    display:none;flex-direction:column;
+    padding:var(--pad);gap:12px;
+  }
+  .sheet.open{display:flex}
+  .sheet .shot{
+    flex:1 1 auto;min-height:0;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);background:#05090A;
+  }
+  .sheet img,.sheet video{position:static;width:auto;height:auto;opacity:1;max-width:100%;max-height:100%;object-fit:contain;display:block}
+  .sheet .note{
+    font-size:14px;line-height:1.5;color:var(--ink-dim);margin:0;
+  }
+  .sheet .note b{color:var(--cyan);font-weight:500}
+  .sheet .acts{display:flex;gap:10px}
+  .sheet .acts button{flex:1}
+
+  .hint{
+    font-size:12.5px;line-height:1.45;color:var(--ink-dim);margin:0;
+    border-left:2px solid var(--cyan-deep);padding-left:10px;
+  }
+</style>
+
+<div class="app">
+  <div class="bar">
+    <div class="mark">
+      <b>Clearsight</b>
+      <span>SCLERA CORRECTION</span>
+    </div>
+    <div class="readout" id="cc">CC30C</div>
+  </div>
+
+  <div class="view" id="view">
+    <canvas id="gl"></canvas>
+    <video id="vid" playsinline muted autoplay></video>
+    <div class="frame"><i></i><i></i><i></i><i></i></div>
+    <div class="rec" id="rec"><b></b><span id="recTime">0:00</span></div>
+    <div class="flag" id="flag">FILTER ON</div>
+    <div class="gate" id="gate">
+      <p id="gateMsg"><b>Tap Start camera.</b> Safari will ask for camera access. Everything is processed on your phone — no video is uploaded anywhere.</p>
+      <button id="start">Start camera</button>
+    </div>
+  </div>
+
+  <div class="deck">
+    <div class="dial">
+      <header><label for="strength">Correction</label><var id="strengthVal">0.30 · CC30C</var></header>
+      <input type="range" id="strength" min="0" max="100" value="55" step="1" aria-label="Correction strength">
+    </div>
+    <div class="dial">
+      <header><label for="spread">Spread</label><var id="spreadVal">Narrow · 16°</var></header>
+      <input type="range" id="spread" min="0" max="100" value="35" step="1" aria-label="How wide a range of reds gets corrected">
+    </div>
+
+    <div class="row">
+      <div class="side">
+        <button id="flip">Flip</button>
+        <button id="compare">Compare</button>
+      </div>
+      <button class="shutter" id="shoot" aria-label="Take photo"></button>
+      <div class="side right">
+        <button id="record">Rec</button>
+      </div>
+    </div>
+
+    <p class="hint" id="hint">Press and hold <b>Compare</b> to see the raw feed. Cyan cancels red — Correction is how much cyan goes back into the whites of your eyes, in the same density notation as a CC lens filter.</p>
+  </div>
+</div>
+
+<div class="sheet" id="sheet">
+  <div class="shot" id="shot"></div>
+  <p class="note" id="note"></p>
+  <div class="acts">
+    <button id="saveBtn">Save</button>
+    <button id="closeBtn">Back</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var video   = document.getElementById('vid');
+  var canvas  = document.getElementById('gl');
+  var gate    = document.getElementById('gate');
+  var gateMsg = document.getElementById('gateMsg');
+  var startBt = document.getElementById('start');
+  var flag    = document.getElementById('flag');
+  var ccOut   = document.getElementById('cc');
+  var sEl     = document.getElementById('strength');
+  var spEl    = document.getElementById('spread');
+  var sOut    = document.getElementById('strengthVal');
+  var spOut   = document.getElementById('spreadVal');
+  var flipBt  = document.getElementById('flip');
+  var cmpBt   = document.getElementById('compare');
+  var shootBt = document.getElementById('shoot');
+  var recBt   = document.getElementById('record');
+  var recBadge= document.getElementById('rec');
+  var recTime = document.getElementById('recTime');
+  var sheet   = document.getElementById('sheet');
+  var shot    = document.getElementById('shot');
+  var note    = document.getElementById('note');
+  var saveBtn = document.getElementById('saveBtn');
+  var closeBtn= document.getElementById('closeBtn');
+
+  var facing = 'user';
+  var stream = null;
+  var bypass = false;
+  var gl, prog, tex, uni = {};
+  var running = false;
+
+  /* ---------------- shader ---------------- */
+  var VS = [
+    'attribute vec2 p;',
+    'varying vec2 uv;',
+    'void main(){ uv = p*0.5+0.5; gl_Position = vec4(p,0.0,1.0); }'
+  ].join('\n');
+
+  var FS = [
+    'precision mediump float;',
+    'varying vec2 uv;',
+    'uniform sampler2D tex;',
+    'uniform vec2 uScale;',     // cover fit
+    'uniform float uMirror;',   // 1.0 = mirror horizontally
+    'uniform float uStrength;',
+    'uniform float uHueWin;',
+    'uniform float uSatMax;',
+    'uniform float uValMin;',
+    '',
+    'float hueOf(vec3 c, float mx, float mn){',
+    '  float d = mx - mn;',
+    '  if(d < 0.0001) return 0.0;',
+    '  float h;',
+    '  if(mx == c.r)      h = mod((c.g - c.b)/d, 6.0);',
+    '  else if(mx == c.g) h = (c.b - c.r)/d + 2.0;',
+    '  else               h = (c.r - c.g)/d + 4.0;',
+    '  return h * 60.0;',
+    '}',
+    '',
+    'void main(){',
+    '  vec2 t = (uv - 0.5) * uScale + 0.5;',
+    '  t.x = mix(t.x, 1.0 - t.x, uMirror);',
+    '  if(t.x < 0.0 || t.x > 1.0 || t.y < 0.0 || t.y > 1.0){ gl_FragColor = vec4(0.02,0.035,0.04,1.0); return; }',
+    '  vec3 c = texture2D(tex, t).rgb;',
+    '',
+    '  if(uStrength <= 0.001){ gl_FragColor = vec4(c,1.0); return; }',
+    '',
+    '  float mx = max(c.r, max(c.g, c.b));',
+    '  float mn = min(c.r, min(c.g, c.b));',
+    '  float sat = mx <= 0.001 ? 0.0 : (mx - mn) / mx;',
+    '  float val = mx;',
+    '  float h = hueOf(c, mx, mn);',
+    '  float hd = min(h, 360.0 - h);',            // distance from pure red
+    '',
+    // pixel must be red-hued, not very saturated, and bright: that is bloodshot white,
+    // whereas skin sits at a warmer hue and higher saturation.
+    '  float mHue = 1.0 - smoothstep(uHueWin * 0.55, uHueWin, hd);',
+    '  float mSat = 1.0 - smoothstep(uSatMax * 0.70, uSatMax, sat);',
+    '  float mVal = smoothstep(uValMin - 0.14, uValMin, val);',
+    '  float mask = mHue * mSat * mVal;',
+    '',
+    '  float base   = max(c.g, c.b);',
+    '  float excess = max(c.r - base, 0.0);',
+    '  float k      = uStrength * mask;',
+    '',
+    '  float r2 = c.r - excess * k;',
+    '  float lift = excess * k * 0.30;',
+    '  vec3 o = vec3(r2, min(c.g + lift * 0.55, 1.0), min(c.b + lift * 0.75, 1.0));',
+    '  gl_FragColor = vec4(o, 1.0);',
+    '}'
+  ].join('\n');
+
+  function compile(type, src){
+    var s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if(!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+    return s;
+  }
+
+  function initGL(){
+    gl = canvas.getContext('webgl', {preserveDrawingBuffer:true, alpha:false}) ||
+         canvas.getContext('experimental-webgl', {preserveDrawingBuffer:true, alpha:false});
+    if(!gl) throw new Error('no-webgl');
+
+    prog = gl.createProgram();
+    gl.attachShader(prog, compile(gl.VERTEX_SHADER, VS));
+    gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FS));
+    gl.linkProgram(prog);
+    if(!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+    gl.useProgram(prog);
+
+    var buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(prog, 'p');
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+    ['tex','uScale','uMirror','uStrength','uHueWin','uSatMax','uValMin'].forEach(function(n){
+      uni[n] = gl.getUniformLocation(prog, n);
+    });
+
+    tex = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.uniform1i(uni.tex, 0);
+  }
+
+  /* ---------------- settings ---------------- */
+  function strength(){ return bypass ? 0 : (+sEl.value / 100) * 0.95; }
+  function spread(){ return +spEl.value / 100; }
+
+  function labels(){
+    var s = strength();
+    var cc = Math.round((+sEl.value/100) * 0.5 * 100);           // CC density, e.g. 30 -> CC30C
+    var code = 'CC' + (cc < 10 ? '0' : '') + cc + 'C';
+    sOut.textContent = ((+sEl.value/100)*0.5).toFixed(2) + ' · ' + code;
+    ccOut.textContent = bypass ? 'BYPASS' : code;
+    ccOut.className = 'readout' + (bypass || s === 0 ? ' off' : '');
+
+    var win = 12 + spread() * 22;
+    var word = win < 20 ? 'Narrow' : (win < 27 ? 'Medium' : 'Wide');
+    spOut.textContent = word + ' · ' + Math.round(win) + '°';
+
+    flag.textContent = bypass ? 'BYPASS — RAW FEED' : (s === 0 ? 'FILTER OFF' : 'FILTER ON');
+    flag.className = 'flag' + (bypass ? ' bypass' : '');
+  }
+
+  function pushUniforms(){
+    gl.uniform1f(uni.uStrength, strength());
+    gl.uniform1f(uni.uHueWin, 12 + spread() * 22);
+    gl.uniform1f(uni.uSatMax, 0.34 + spread() * 0.30);
+    gl.uniform1f(uni.uValMin, 0.50 - spread() * 0.16);
+    gl.uniform1f(uni.uMirror, facing === 'user' ? 1.0 : 0.0);
+  }
+
+  /* ---------------- render ---------------- */
+  function sizeCanvas(){
+    var r = document.getElementById('view').getBoundingClientRect();
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = Math.max(2, Math.round(r.width * dpr));
+    var h = Math.max(2, Math.round(r.height * dpr));
+    if(canvas.width !== w || canvas.height !== h){ canvas.width = w; canvas.height = h; }
+  }
+
+  function coverScale(cw, ch, vw, vh){
+    // maps canvas uv into video uv so the video covers the canvas
+    var ca = cw / ch, va = vw / vh;
+    return ca > va ? [1, ca / va] : [va / ca, 1];
+  }
+
+  function draw(){
+    if(!running) return;
+    if(video.readyState >= 2 && video.videoWidth){
+      sizeCanvas();
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.bindTexture(gl.TEXTURE_2D, tex);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      try{
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, video);
+      }catch(e){}
+      var sc = coverScale(canvas.width, canvas.height, video.videoWidth, video.videoHeight);
+      gl.uniform2f(uni.uScale, sc[0], sc[1]);
+      pushUniforms();
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    }
+    requestAnimationFrame(draw);
+  }
+
+  /* ---------------- camera ---------------- */
+  function stop(){
+    if(stream){ stream.getTracks().forEach(function(t){ t.stop(); }); stream = null; }
+  }
+
+  function fail(msg){
+    gate.classList.remove('hide');
+    gateMsg.innerHTML = msg;
+    startBt.textContent = 'Try again';
+  }
+
+  function open(){
+    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+      fail('<b>This browser can’t open a camera.</b> Open the page in Safari on your iPhone rather than inside another app.');
+      return;
+    }
+    stop();
+    var want = {
+      audio:false,
+      video:{ facingMode: facing, width:{ideal:1280}, height:{ideal:1280} }
+    };
+    navigator.mediaDevices.getUserMedia(want).then(function(s){
+      stream = s;
+      video.srcObject = s;
+      return video.play();
+    }).then(function(){
+      gate.classList.add('hide');
+      if(!gl) initGL();
+      if(!running){ running = true; requestAnimationFrame(draw); }
+      labels();
+    }).catch(function(err){
+      var n = err && err.name;
+      if(n === 'NotAllowedError'){
+        fail('<b>Camera access was blocked.</b> In Safari, tap <b>aA</b> in the address bar → Website Settings → Camera → Allow, then reload. If you launched from the home screen, delete the icon and re-add it after allowing.');
+      }else if(n === 'NotFoundError' || n === 'OverconstrainedError'){
+        fail('<b>No camera found on that side.</b> Tap Flip, then Try again.');
+      }else{
+        fail('<b>Couldn’t start the camera.</b> ' + (err && err.message ? err.message : '') + ' Reload the page and try again.');
+      }
+    });
+  }
+
+  startBt.addEventListener('click', open);
+
+  flipBt.addEventListener('click', function(){
+    facing = (facing === 'user') ? 'environment' : 'user';
+    if(stream) open();
+  });
+
+  /* hold-to-compare */
+  function hold(on){
+    bypass = on;
+    cmpBt.classList.toggle('held', on);
+    labels();
+  }
+  ['pointerdown','touchstart'].forEach(function(e){
+    cmpBt.addEventListener(e, function(ev){ ev.preventDefault(); hold(true); }, {passive:false});
+  });
+  ['pointerup','pointercancel','pointerleave','touchend','touchcancel'].forEach(function(e){
+    cmpBt.addEventListener(e, function(){ hold(false); });
+  });
+
+  sEl.addEventListener('input', labels);
+  spEl.addEventListener('input', labels);
+  labels();
+
+  /* ---------------- capture ---------------- */
+  var lastBlob = null, lastName = '';
+
+  function renderAtFullRes(){
+    var vw = video.videoWidth, vh = video.videoHeight;
+    var pw = canvas.width, ph = canvas.height;
+    canvas.width = vw; canvas.height = vh;
+    gl.viewport(0,0,vw,vh);
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    try{ gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, video); }catch(e){}
+    gl.uniform2f(uni.uScale, 1, 1);
+    pushUniforms();
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    return function restore(){ canvas.width = pw; canvas.height = ph; };
+  }
+
+  shootBt.addEventListener('click', function(){
+    if(!running || !video.videoWidth) return;
+    var restore = renderAtFullRes();
+    canvas.toBlob(function(b){
+      restore();
+      if(!b) return;
+      lastBlob = b; lastName = 'clearsight-' + Date.now() + '.jpg';
+      var img = new Image();
+      img.alt = 'Photo with sclera correction applied';
+      img.src = URL.createObjectURL(b);
+      shot.innerHTML = ''; shot.appendChild(img);
+      note.innerHTML = 'To keep it: <b>press and hold the photo</b>, then choose <b>Add to Photos</b>. Or tap Save for the share sheet.';
+      sheet.classList.add('open');
+    }, 'image/jpeg', 0.92);
+  });
+
+  /* ---------------- recording ---------------- */
+  var recorder = null, chunks = [], recStart = 0, recTimer = null, recMime = '';
+
+  (function detect(){
+    if(typeof MediaRecorder === 'undefined' || !canvas.captureStream){
+      recBt.disabled = true; recBt.title = 'Video recording is not supported in this browser';
+      return;
+    }
+    ['video/mp4;codecs=avc1','video/mp4','video/webm;codecs=vp9','video/webm'].some(function(m){
+      if(MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m)){ recMime = m; return true; }
+      return false;
+    });
+  })();
+
+  function tick(){
+    var t = Math.floor((Date.now() - recStart)/1000);
+    recTime.textContent = Math.floor(t/60) + ':' + ('0' + (t%60)).slice(-2);
+  }
+
+  function startRec(){
+    if(!running) return;
+    var cs;
+    try{ cs = canvas.captureStream(30); }catch(e){ recBt.disabled = true; return; }
+    navigator.mediaDevices.getUserMedia({audio:true}).catch(function(){ return null; }).then(function(a){
+      if(a) a.getAudioTracks().forEach(function(t){ cs.addTrack(t); });
+      chunks = [];
+      try{
+        recorder = recMime ? new MediaRecorder(cs, {mimeType:recMime}) : new MediaRecorder(cs);
+      }catch(e){ recBt.disabled = true; return; }
+      recorder.ondataavailable = function(e){ if(e.data && e.data.size) chunks.push(e.data); };
+      recorder.onstop = function(){
+        if(a) a.getTracks().forEach(function(t){ t.stop(); });
+        var type = (recMime || 'video/mp4').split(';')[0];
+        var b = new Blob(chunks, {type:type});
+        lastBlob = b;
+        lastName = 'clearsight-' + Date.now() + (type.indexOf('mp4') > -1 ? '.mp4' : '.webm');
+        var v = document.createElement('video');
+        v.src = URL.createObjectURL(b); v.controls = true; v.playsInline = true;
+        shot.innerHTML = ''; shot.appendChild(v);
+        note.innerHTML = 'Tap <b>Save</b> to send it to Photos through the share sheet. If your phone won’t offer that, screen-record the viewfinder instead.';
+        sheet.classList.add('open');
+      };
+      recorder.start();
+      recStart = Date.now(); tick();
+      recTimer = setInterval(tick, 500);
+      recBadge.classList.add('on');
+      recBt.classList.add('armed');
+      recBt.textContent = 'Stop';
+    });
+  }
+
+  function stopRec(){
+    if(recorder && recorder.state !== 'inactive') recorder.stop();
+    recorder = null;
+    clearInterval(recTimer);
+    recBadge.classList.remove('on');
+    recBt.classList.remove('armed');
+    recBt.textContent = 'Rec';
+  }
+
+  recBt.addEventListener('click', function(){
+    if(recorder) stopRec(); else startRec();
+  });
+
+  /* ---------------- sheet ---------------- */
+  saveBtn.addEventListener('click', function(){
+    if(!lastBlob) return;
+    var file;
+    try{ file = new File([lastBlob], lastName, {type:lastBlob.type}); }catch(e){ file = null; }
+    if(file && navigator.canShare && navigator.canShare({files:[file]})){
+      navigator.share({files:[file]}).catch(function(){ download(); });
+    }else{
+      download();
+    }
+    function download(){
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(lastBlob);
+      a.download = lastName;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(a.href); }, 1000);
+      note.innerHTML = 'Saved to <b>Files</b>. For your camera roll instead: <b>press and hold the image above</b> → <b>Add to Photos</b>.';
+    }
+  });
+
+  closeBtn.addEventListener('click', function(){
+    sheet.classList.remove('open');
+    var m = shot.querySelector('img,video');
+    if(m && m.src) URL.revokeObjectURL(m.src);
+    shot.innerHTML = '';
+  });
+
+  window.addEventListener('resize', sizeCanvas);
+  window.addEventListener('orientationchange', function(){ setTimeout(sizeCanvas, 250); });
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden && recorder) stopRec();
+  });
+
+  sizeCanvas();
+})();
+</script>
+
+</body>
+</html>
